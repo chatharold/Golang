@@ -1,16 +1,15 @@
+// Copyright 2016 Harold Ramos
+
 package main
 
 import "fmt"
 
 func main() {
-	// Assertion: is ony used in interfaces
-	// Definition forceful statement
-
 	var name interface{} = "harold"
-	_, check := name.(string)
-	if check {
-		fmt.Println("I am a string")
+	nameValue, cond := name.(string) // nameValue gets name(value) && cond(if is a string or not)
+	if cond {
+		fmt.Println("String", nameValue) // String harold
 	} else {
-		fmt.Println("something else")
+		fmt.Println("Number")
 	}
 }
