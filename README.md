@@ -1,3 +1,3 @@
 # Golang
 
-This is a basic tutorial of the go-programming language.
+This is a basic tutorial of the Go-programming language.
