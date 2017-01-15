@@ -15,24 +15,24 @@ var (
 
 // Locates all the files and routes them
 func Directories() {
-	tempDir, err := template.ParseGlob("./templates/*.html") // All files
+	tempDir, err := template.ParseGlob("./templates/*.html") // All files inside directory
 	if err != nil {
 		log.Fatalln("Creating err", err)
 		os.Exit(1)
 	}
-	tempHome = tempDir.Lookup("home.html") // Static page
-	tempLogin = tempDir.Lookup("login.html")
+	tempHome = tempDir.Lookup("home.html") 	 // Looks in the directory for file: home.html
+	tempLogin = tempDir.Lookup("login.html") // Looks in the directory for file: login.html
 }
-
+// login handler
 func login(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		tempLogin.Execute(w, nil)
+		tempLogin.Execute(w, nil) // calls tempLogin file called login.html
 	}
 }
-
+// start handler
 func start(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		tempHome.Execute(w, nil)
+		tempHome.Execute(w, nil) // calls tempHome file called home.html
 	}
 }
 
