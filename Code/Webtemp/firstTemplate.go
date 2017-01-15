@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -9,36 +8,38 @@ import (
 )
 
 var (
-	tempDir  *template.Template // Directory where all html pages are located.
-	tempHome *template.Template // Static page
+	tempDir   *template.Template
+	tempHome  *template.Template
+	tempLogin *template.Template
 )
 
-// Template Page
-func templatePage() {
-	tempDir, err := template.ParseGlob("./templates/*.html") // All pages
+// Locates all the files and routes them
+func Directories() {
+	tempDir, err := template.ParseGlob("./templates/*.html") // All files
 	if err != nil {
-		log.Fatalln("Parsing template", err)
+		log.Fatalln("Creating err", err)
 		os.Exit(1)
 	}
-	tempHome = tempDir.Lookup("home.html") // Static template
+	tempHome = tempDir.Lookup("home.html") // Static page
+	tempLogin = tempDir.Lookup("login.html")
 }
 
-// Login Page
-func Login(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "<h1>Login page:</h1>")
+func login(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "GET" {
+		tempLogin.Execute(w, nil)
+	}
 }
 
-//  Start Handler
-func Start(w http.ResponseWriter, r *http.Request) {
+func start(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		tempHome.Execute(w, nil)
 	}
 }
 
 func main() {
-	templatePage() // Executing template
-	log.Println("App is running on port: 8000")
-	http.HandleFunc("/login", Login) // Login handler
-	http.HandleFunc("/", Start)      // Start handler
+	Directories()
+	log.Println("App is running ...")
+	http.HandleFunc("/login", login)
+	http.HandleFunc("/", start)
 	http.ListenAndServe(":8000", nil)
 }
