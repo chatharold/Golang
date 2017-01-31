@@ -1,7 +1,7 @@
-open .bash_profile
+1- vim ~/.bash_profile
 
-# GO Settings
+# Go Settings
 
-export GOROOT="/usr/local/go"
-export GOPATH="/Users/name/GWS"
-export PATH="/Users/name/GWS/bin:$PATH"
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/GWS
+export PATH=$PATH:$GOPATH/bin
