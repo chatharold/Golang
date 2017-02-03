@@ -7,7 +7,7 @@ func main() {
 		if i == 5 {
 			continue // Skips the number 5
 		} else if i == 9 {
-			break
+			break // Stops counting
 		}
 
 		fmt.Println(i)
