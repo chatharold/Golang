@@ -9,7 +9,6 @@ func main() {
 		} else if i == 9 {
 			break // Stops counting
 		}
-
 		fmt.Println(i)
 	}
 }
