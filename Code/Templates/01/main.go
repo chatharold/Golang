@@ -23,13 +23,13 @@ func main() {
 	fmt.Println(tpl)
 
 	/*
-			Result:
-			<!doctype html>
-		        <html>
-		        <head></head>
-		        <body>
-		        <h1> Welcome: Harold Ramos</h1>
-		        </body>
-		        </html>
+					Result:
+					<!doctype html>
+				  <html>
+				  <head></head>
+		      <body>
+				  <h1> Welcome: Harold Ramos</h1>
+		      </body>
+				  </html>
 	*/
 }
